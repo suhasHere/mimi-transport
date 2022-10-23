@@ -2,14 +2,14 @@
 
 
 
-Network Working Group                                        C. Jennings
-Internet-Draft                                             S. Nandakumar
+Network Working Group                                      S. Nandakumar
+Internet-Draft                                               C. Jennings
 Intended status: Informational                                     Cisco
 Expires: 26 April 2023                                   23 October 2022
 
 
                Cached and Async meSsage Transport (CAST)
-                 draft-jennnings-mimi-transport-latest
+                 draft-nandakumar-mimi-transport-latest
 
 Abstract
 
@@ -286,11 +286,11 @@ Appendix A.  Acknowledgements
 
 Authors' Addresses
 
-   Cullen Jennings
-   Cisco
-   Email: fluffy@iii.ca
-
-
    Suhas Nandakumar
    Cisco
    Email: snandaku@cisco.com
+
+
+   Cullen Jennings
+   Cisco
+   Email: fluffy@iii.ca

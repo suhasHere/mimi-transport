@@ -1,7 +1,7 @@
 ---
 title: Cached and Async meSsage Transport (CAST)	 
 abbrev: mimi-cast
-docname: draft-jennnings-mimi-transport-latest
+docname: draft-nandakumar-mimi-transport-latest
 category: info
 
 ipr: trust200902
@@ -12,14 +12,14 @@ stand_alone: yes
 pi: [toc, sortrefs, symrefs]
 
 author:
- -  ins: C. Jennings
-    name: Cullen Jennings
-    organization: Cisco
-    email: fluffy@iii.ca
  -  ins: S. Nandakumar
     name: Suhas Nandakumar
     organization: Cisco
     email: snandaku@cisco.com
+ -  ins: C. Jennings
+    name: Cullen Jennings
+    organization: Cisco
+    email: fluffy@iii.ca
 
 --- abstract
 
