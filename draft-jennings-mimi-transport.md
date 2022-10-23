@@ -213,13 +213,20 @@ amongst the incoming servers with subscriptions.
 
 # Security Considerations
 
+The asumption is all messages are end to end encrypted and neither
+domain coan read the contents of any message between alice and bob. 
+
 Within the CAST architecture, the interacting domains are trusted to deliver 
 each other messages for their users and are bound by business agreements that 
 further constrain the rules related to use of messages exchanged, dealing with 
 spam and any other policies that govern the successful federation. This is 
 meant for major services to connect to other major services and not designed 
-to deal with the issue of a random small domain with no business relationship 
+to deal with the issue of a domain with no business relationship 
 to another domain connected to it.
+
+A given domain like abc does not reveal to xyz all the susbcribers it
+has but if alice in abc sends a message to bob in xyz, it does reveal to
+abc the existance of bob and to xyz the existance of alice. 
 
 
 --- back
