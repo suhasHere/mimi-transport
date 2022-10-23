@@ -5,7 +5,7 @@
 Network Working Group                                        C. Jennings
 Internet-Draft                                             S. Nandakumar
 Intended status: Informational                                     Cisco
-Expires: 25 April 2023                                   22 October 2022
+Expires: 26 April 2023                                   23 October 2022
 
 
                Cached and Async meSsage Transport (CAST)
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2023.
+   This Internet-Draft will expire on 26 April 2023.
 
 Copyright Notice
 
@@ -213,7 +213,7 @@ Table of Contents
        matches the name from the previous step - In this example, since
        there exists an active subscription for the pattern "abc.com/
        messages/*", Alice's message will be delivered to the CAST entity
-       at "xyz.com" based on the lookupresult
+       at "xyz.com" based on the lookup result
 
    4, On receiving the CAST Publish message, the CAST entity at the
    domain "xyz.com" will have sufficient information in the message to
