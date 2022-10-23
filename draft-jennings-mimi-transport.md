@@ -186,7 +186,7 @@ steps on receiving the message:
   - Forward the message to the CAST endpoint that matches the name from the previous step
   - In this example, since there exists an active subscription for the pattern 
     “abc.com/messages/*”, Alice’s message will be delivered to the CAST entity 
-    at “xyz.com” based on the lookupresult
+    at “xyz.com” based on the lookup result
 
 4, On receiving the CAST Publish message, the CAST entity at the domain “xyz.com” 
 will have sufficient information in the message to forward it to the right target 
