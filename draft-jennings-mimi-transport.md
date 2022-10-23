@@ -132,11 +132,11 @@ flow depicted are given below
 ~~~~~
 
                  (1)Add Subscription
-                 abc.com/messages/* -> xyz.com
+                 messages/xyz.com/* -> xyz.com
 
                             ▮ ▮ ▮
                             ▮     ▮
-                            ▮     ▮       (0)Sub:abc.com/messages/*
+                            ▮     ▮       (0)Sub:messages/xyz.com/*
                  ┌──────────▾─┐   ▮                       ┌────────────┐
                  │            │◀──▮───────────────────────│            │
            ┌────▶│  abc.com   │                           │  xyz.com   │─────┐
@@ -148,12 +148,10 @@ flow depicted are given below
            │                                                                 │
            │       (3)Store:
            │       Publish message                             (5)Publish
-           │                                                   Name:abc.com/messages/alice/..
-                                                               Msg:{body:"hi bob",
-    (2)Publish                                                      to:bob@xyz.com}
-    Name:abc.com/messages/alice/..
-    Msg:{body:"hi bob",                                                      │
-         to:bob@xyz.com}                                                     │
+           │                                                   Name:messages/xyz.com/..
+                                                               Msg:{body:"hi bob"....}
+    Name:messages/xyz.com/1
+    Msg:{body:"hi bob"..}                                                     │
                                                                              ▼
            │                                                            .─────────.
       .─────────.                                                      ╱           ╲
@@ -171,21 +169,22 @@ expresses such an interest.
 
 1. The CAST endpoint in the domain xyz.com sends “Subscribe” message to CAST 
 endpoint in the “abc.com” indicating its interest to receive any message that 
-matches the name “abc.com/message/*”
+matches the name “messages/xyz.com/*”, i.e any message targetted to the domain
+"xyz.com"
 
 2. On receiving the “Subscribe” message, the CAST entity at the domain “abc.com” 
-creates an active subscription entry for “abc.com/message/*” against the domain 
+creates an active subscription entry for the name “messages/xyz.com/*” against the domain 
 “xyz.com”. Thus created subscriptions remain active until they expire or are canceled. 
 Subscriptions can be renewed periodically to keep them active as well.
 
 3. When Alice from abc.com publishes message to Bob at xyz.com, by sending 
 “Publish” message, the CAST entity (within abc.com) performs the following 
 steps on receiving the message:
-  - Store the message against the name (“abc.com/messages/alice/id1”) at least for 24 hours.
+  - Store the message (with name messages/xyz.com/1) for at least for 24 hours.
   - Look up for any active subscriptions that matches the name
   - Forward the message to the CAST endpoint that matches the name from the previous step
   - In this example, since there exists an active subscription for the pattern 
-    “abc.com/messages/*”, Alice’s message will be delivered to the CAST entity 
+    “messages/xyz.com/*”, Alice’s message will be delivered to the CAST entity 
     at “xyz.com” based on the lookup result
 
 4, On receiving the CAST Publish message, the CAST entity at the domain “xyz.com” 
