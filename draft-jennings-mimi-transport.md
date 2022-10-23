@@ -200,14 +200,29 @@ message delivery, the CAST entity resyncs its state by reissuing a “Subscribe�
 message, when it's back in operation and thus retrieve any cached messages as 
 well as stream new messages that get published in the future.
 
-To horizontally scale to a huge volume of messages, one or more servers 
-can ask for messages and only one of them ends up getting a copy of each 
-message. One way to achieve this would be to perform an equivalent of 
-“x=y” modulo arithmetic on the name in the subscriptions. For example, 
-on subscription, one can take the hash of the UUID and then compute 
-module 7 and if that equals 5, that server is chosen to receive the 
-messages matching that name, thus allowing the load to be distributed 
-amongst the incoming servers with subscriptions.
+## Load Balancing and Reliability 
+
+To horizontally scale to a huge volume of messages, the servers in the
+abc.com domain can use any of the traditional techniques for load
+balancing requests across a cluster of servers including DNS, IP
+hashing, and others. Allowing the receiving domain, xyz.com, to load
+balance the incoming message across many servers can be slightly more
+complicated. The technique proposed here is to allow the subscription to
+filter a subset of message and make sure there is a sperate subscription
+for each incoming set. The filter criteria is is done by taking the hash
+of the UUID for the message and computing a modulo for it and checking
+it that matches a constant provide for each subscription.  For example
+if the xyz.com wanted to split the data across 3 connection, it would
+specify a module of 3 and then each connection would specify 0,1,2
+respectively as the constant.
+
+The fact that the abc.com domain retains the message for some period of
+time and they can be requested a second time if needed allows the
+messages processing to be pipelined and batched with no acknowledgement
+which can greatly increase the speed of processing some sort of
+transaction where the sender can discard the message once the receivers
+acknowledge having it. The UUID in the messages allow the receiver to
+easily deal with receiving the same message more than once.
        
 
 # Security Considerations
