@@ -213,13 +213,24 @@ amongst the incoming servers with subscriptions.
 
 # Security Considerations
 
+The assumption is all messages are end to end encrypted and neither
+domain can read the contents of any message between alice and bob. 
+
+The assumption is that a major mitigation of SPAM will be that alice sends
+a connection request to bob and bob accepts that before any messages
+with user generated content can be sent between alice and bob. 
+
 Within the CAST architecture, the interacting domains are trusted to deliver 
 each other messages for their users and are bound by business agreements that 
 further constrain the rules related to use of messages exchanged, dealing with 
 spam and any other policies that govern the successful federation. This is 
 meant for major services to connect to other major services and not designed 
-to deal with the issue of a random small domain with no business relationship 
+to deal with the issue of a domain with no business relationship 
 to another domain connected to it.
+
+A given domain like abc.com does not reveal to xyz.com all the users it
+has but if alice in abc sends a message to bob in xyz, it does reveal to
+abc the existence of bob, and to xyz the existence of alice. 
 
 
 --- back
